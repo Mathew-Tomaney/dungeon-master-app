@@ -27,3 +27,7 @@ class TestCharacter(unittest.TestCase):
     
     def test_character_has_no_id_at_start(self):
         self.assertEqual(None, self.character_1.id)
+    
+    def test_character_can_have_id(self):
+        self.character_2 = Character("Stormchaser", "Goliath", "Paladin", 11, 3, 5, 7)
+        self.assertEqual(7, self.character_2.id)

@@ -1,7 +1,7 @@
-from db/run_sql import run_sql
+from db.run_sql import run_sql
 
-from models/party import Party
-from models/character import Character
+from models.party import Party
+from models.character import Character
 
 def save(party):
     sql = "INSERT INTO parties (name, next_game) VALUES (%s, %s) RETURNING *"

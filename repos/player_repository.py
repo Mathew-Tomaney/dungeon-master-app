@@ -1,7 +1,7 @@
-from db/run_sql import run_sql
+from db.run_sql import run_sql
 
-from models/player import Player
-from models/character import Character
+from models.player import Player
+from models.character import Character
 
 def save(player):
 
