@@ -4,3 +4,6 @@ class Player:
         self.last_name = last_name
         self.email = email
         self.id = id
+
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
