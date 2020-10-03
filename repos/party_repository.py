@@ -48,7 +48,7 @@ def update(party):
     values = [party.name, party.next_game, party.id]
     run_sql(sql, values)
 
-def select_characters_in_party(party):
+def characters(party):
     characters_in_party = []
     sql = "SELECT characters.* FROM characters WHERE party_id = %s"
     values = [party.id]
@@ -59,7 +59,7 @@ def select_characters_in_party(party):
         characters_in_party.append(character)
     return characters_in_party
 
-def select_players_in_party(party):
+def players(party):
     players_in_party = []
     sql = "SELECT players.* FROM players INNER JOIN characters ON characters.player_id = players.id WHERE characters.party_id = %s"
     values = [party.id]
