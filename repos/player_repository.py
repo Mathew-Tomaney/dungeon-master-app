@@ -53,7 +53,7 @@ def characters(player):
     values = [player.id]
     results = run_sql(sql, values)
 
-    for row in results:
-        character = Character(row['name'], row['race'], row['archetype'], row['level'], row['player_id'], row['party_id'], row['id'])
+    for result in results:
+        character = Character(result['name'], result['race'], result['archetype'], result['level'], result['player_id'], result['party_id'], result['id'])
         characters.append(character)
     return characters

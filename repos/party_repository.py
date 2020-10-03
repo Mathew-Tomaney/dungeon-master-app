@@ -2,6 +2,8 @@ from db.run_sql import run_sql
 
 from models.party import Party
 from models.character import Character
+from models.player import Player
+import repos.player_repository as player_repository
 
 def save(party):
     sql = "INSERT INTO parties (name, next_game) VALUES (%s, %s) RETURNING *"
@@ -57,10 +59,10 @@ def select_characters_in_party(party):
         characters_in_party.append(character)
     return characters_in_party
 
-def select_players_in_party(id):
+def select_players_in_party(party):
     players_in_party = []
-    sql = "SELECT players.* FROM players INNER JOIN characters ON characters.player_id = player.id WHERE characters.party_id = %s"
-    values = [id]
+    sql = "SELECT players.* FROM players INNER JOIN characters ON characters.player_id = players.id WHERE characters.party_id = %s"
+    values = [party.id]
     results = run_sql(sql, values)
     for result in results:
         player = Player(result["first_name"], result["last_name"], result["email"], result["id"])
