@@ -1,8 +1,12 @@
 from db.run_sql import run_sql
 
 from models.character import Character
+from models.player import Player
+from models.party import Party
 
-Character(row['name'], row['race'], row['archetype'], row['level'], row['player_id'], row['party_id'], row['id'])
+import repos.party_repository as party_repository
+import repos.player_repository as player_repository
+
 
 def save(character):
     sql = "INSERT INTO characters (name, race, archetype, level, player_id, party_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
@@ -10,7 +14,6 @@ def save(character):
     results = run_sql(sql, values)
     id = results[0]['id']
     character.id = id
-    return character
 
 
 def select_all():
@@ -19,8 +22,10 @@ def select_all():
     sql = "SELECT * FROM characters"
     results = run_sql(sql)
 
-    for row in results:
-        character = Character(row['name'], row['race'], row['archetype'], row['level'], row['player_id'], row['party_id'], row['id'])
+    for result in results:
+        player = player_repository.select(result["player_id"])
+        party = party_repository.select(result["party_id"])
+        character = Character(result['name'], result['race'], result['archetype'], result['level'], player, party, result['id'])
         characters.append(character)
     return characters
 
@@ -29,9 +34,11 @@ def select(id):
     sql = "SELECT * FROM characters WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
+    player = player_repository.select(result["player_id"])
+    party = party_repository.select(result["party_id"])
 
     if result is not None:
-        character = Character(row['name'], row['race'], row['archetype'], row['level'], row['player_id'], row['party_id'], row['id'])
+        character = Character(result['name'], result['race'], result['archetype'], result['level'], player, party, result['id'])
     return character
 
 def delete_all():

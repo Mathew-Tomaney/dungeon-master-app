@@ -9,7 +9,6 @@ def save(party):
     results = run_sql(sql, values)
     id = results[0]['id']
     party.id = id
-    return party
 
 
 def select_all():
@@ -58,3 +57,4 @@ def characters(party):
         character = Character(row['name'], row['race'], row['archetype'], row['level'], row['player_id'], row['party_id'], row['id'])
         characters.append(character)
     return characters
+

@@ -9,7 +9,6 @@ def save(player):
     results = run_sql(sql, values)
     id = results[0]['id']
     player.id = id
-    return player
 
 
 def select_all():
