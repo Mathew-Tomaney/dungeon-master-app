@@ -21,6 +21,6 @@ CREATE TABLE characters (
     race VARCHAR(255),
     archetype VARCHAR(255),
     level INT,
-    player_id SERIAL REFERENCES players(id),
-    party_id SERIAL REFERENCES parties(id)
+    player_id SERIAL REFERENCES players(id) ON DELETE CASCADE,
+    party_id SERIAL REFERENCES parties(id) ON DELETE CASCADE
 );

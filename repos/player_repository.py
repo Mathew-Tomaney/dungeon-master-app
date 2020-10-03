@@ -2,6 +2,8 @@ from db.run_sql import run_sql
 
 from models.player import Player
 from models.character import Character
+from models.party import Party
+import repos.party_repository as party_repository
 
 def save(player):
     sql = "INSERT INTO players (first_name, last_name, email) VALUES (%s, %s, %s) RETURNING *"
@@ -42,18 +44,27 @@ def delete_id(id):
     run_sql(sql, values)
 
 def update(player):
-    sql = "UPDATE players SET (first_name, last_name, email) = (%s, %s %s) WHERE id = %s"
+    sql = "UPDATE players SET (first_name, last_name, email) = (%s, %s, %s) WHERE id = %s"
     values = [player.first_name, player.last_name, player.email, player.id]
     run_sql(sql, values)
 
 def characters(player):
-    characters = []
-
-    sql = "SELECT FROM characters WHERE player_id = %s"
+    player_characters = []
+    sql = "SELECT characters.* FROM characters WHERE player_id = %s"
     values = [player.id]
     results = run_sql(sql, values)
-
     for result in results:
-        character = Character(result['name'], result['race'], result['archetype'], result['level'], result['player_id'], result['party_id'], result['id'])
-        characters.append(character)
-    return characters
+        party = party_repository.select(result['party_id'])
+        character = Character(result['name'], result['race'], result['archetype'], result['level'], player, party, result['id'])
+        player_characters.append(character)
+    return player_characters
+
+def parties(player):
+    player_parties = []
+    sql = "SELECT parties.* FROM parties INNER JOIN characters ON characters.party_id = parties.id WHERE characters.player_id = %s"
+    values = [player.id]
+    results = run_sql(sql, values)
+    for result in results:
+        party = Party(result["name"], result["next_game"], result["id"])
+        player_parties.append(party)
+    return player_parties
