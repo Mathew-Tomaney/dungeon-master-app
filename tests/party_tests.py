@@ -14,3 +14,7 @@ class TestParty(unittest.TestCase):
     
     def test_party_has_no_id_at_start(self):
         self.assertEqual(None, self.party_1.id)
+
+    def test_party_can_have_id(self):
+        self.party_2 = Party("Argyle & Associates", "Friday", 2)
+        self.assertEqual(2, self.party_2.id)

@@ -20,3 +20,7 @@ class TestPlayer(unittest.TestCase):
 
     def test_can_get_full_name(self):
         self.assertEqual("Dafyd Dungynmaestrr", self.player_1.full_name())
+
+    def test_player_can_have_id(self):
+        self.player_2 = Player("Vin", "Diesel", "XXX@witchhunter.com", 9)
+        self.assertEqual(9, self.player_2.id)
