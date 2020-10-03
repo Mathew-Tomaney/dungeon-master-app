@@ -45,7 +45,7 @@ def delete_all():
     sql = "DELETE FROM characters"
     run_sql(sql)
 
-def delete_id():
+def delete_id(id):
     sql = "DELETE FROM characters WHERE id = %s"
     values = [id]
     run_sql(sql, values)

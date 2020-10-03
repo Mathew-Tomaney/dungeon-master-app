@@ -17,8 +17,8 @@ def select_all():
     sql = "SELECT * FROM parties"
     results = run_sql(sql)
 
-    for row in results:
-        party = Party(row['name'], row['next_game'], row['id'] )
+    for result in results:
+        party = Party(result['name'], result['next_game'], result['id'] )
         parties.append(party)
     return parties
 
@@ -29,14 +29,14 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        party = Party(result['name'], result['last_name'], result['id'] )
+        party = Party(result['name'], result['next_game'], result['id'] )
     return party
 
 def delete_all():
     sql = "DELETE FROM parties"
     run_sql(sql)
 
-def delete_id():
+def delete_id(id):
     sql = "DELETE FROM parties WHERE id = %s"
     values = [id]
     run_sql(sql, values)

@@ -17,8 +17,8 @@ def select_all():
     sql = "SELECT * FROM players"
     results = run_sql(sql)
 
-    for row in results:
-        player = Player(row['first_name'], row['last_name'], row['email'], row['id'] )
+    for result in results:
+        player = Player(result['first_name'], result['last_name'], result['email'], result['id'] )
         players.append(player)
     return players
 
@@ -29,14 +29,14 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        player = Player(result['first_name'], result['last_name'], row['email'], result['id'] )
+        player = Player(result['first_name'], result['last_name'], result['email'], result['id'] )
     return player
 
 def delete_all():
     sql = "DELETE FROM players"
     run_sql(sql)
 
-def delete_id():
+def delete_id(id):
     sql = "DELETE FROM players WHERE id = %s"
     values = [id]
     run_sql(sql, values)
