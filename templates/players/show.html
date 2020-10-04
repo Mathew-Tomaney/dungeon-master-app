@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<a href="/players">Go Back</a>
 <section>
     <h2> {{ player.full_name() }} </h2>
     <p>E-mail: {{ player.email }}</p>
@@ -13,18 +13,22 @@
 
 <section>
     <h3>Playing: </h3>
+    
     {% for character in characters %}
-    <div>
-        <p>Character: {{ character.name }} <br> in <br> Party: {{ character.party.name }} </p>
-        <p>Next game: {{ character.party.next_game }}</p>
-        <form action="/characters/{{ character.id }}">
-            <input type="submit" value="View Character">
-        </form>
-        <form action="/parties/{{ character.party.id }}">
-            <input type="submit" value="View Party">
-        </form>
-    </div>
+        <div>
+            <p>Character: {{ character.name }} <br> in <br> Party: {{ character.party.name }} </p>
+            <p>Next game: {{ character.party.next_game }}</p>
+            <form action="/characters/{{ character.id }}">
+                <input type="submit" value="View Character">
+            </form>
+            <form action="/parties/{{ character.party.id }}">
+                <input type="submit" value="View Party">
+            </form>
+        </div>
     {% endfor %}
+    {% if characters == [] %}
+        <p>No characters/parties yet!</p>
+    {% endif %}
 </section>
 
 
