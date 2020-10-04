@@ -48,7 +48,7 @@ def update_player(id):
     email = request.form["email"]
     player = Player(first_name, last_name, email, id)
     player_repository.update(player)
-    return redirect("/players")
+    return show_player(player.id)
 
 # delete
 @players_blueprint.route("/players/<id>/delete", methods=["POST"])
