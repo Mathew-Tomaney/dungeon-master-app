@@ -1,5 +1,6 @@
 from flask import Blueprint, Flask, redirect, render_template, request
 
+from models.player import Player
 import repos.player_repository as player_repository
 
 players_blueprint = Blueprint("players", __name__)
@@ -30,14 +31,14 @@ def create_player():
     last_name = request.form["last_name"]
     email = request.form["email"]
     new_player = Player(first_name, last_name, email)
-    players_blueprint.save(new_player)
-    return redirect(players/<new_player.id>)
+    player_repository.save(new_player)
+    return redirect("players/<new_player.id>")
 
 # edit
 @players_blueprint.route("/players/<id>/edit")
 def edit_player(id):
     player = player_repository.select(id)
-    return render_template("/players/edit.html" player=player)
+    return render_template("/players/edit.html", player=player)
 
 # update
 @players_blueprint.route("/players/<id>", methods=["POST"])

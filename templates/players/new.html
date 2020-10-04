@@ -2,6 +2,17 @@
 
 {% block content %}
 
-
+<h2> Create a new Player</h2>
+<form action="/players" method="POST">
+    <div>
+        <label for="first_name">First name: </label>
+        <input type="text" id="first_name" name="first_name">
+        <label for="last_name">Last name: </label>
+        <input type="text" id="last_name" name="last_name">
+        <label for="email">E-mail address: </label>
+        <input type="text" id="email" name="email">
+        <input type="submit" name="Create">
+    </div>
+</form>
 
 {% endblock %}
