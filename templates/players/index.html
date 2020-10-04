@@ -2,6 +2,22 @@
 
 {% block content %}
 
-{{ players }}
+
+<h2>Players</h2>
+
+{% for player in players %}
+
+<section>
+    <p>Name: {{ player.full_name() }}</p>
+    <p>E-mail: {{ player.email }}</p>
+    <form action="/players/{{ player.id }}">
+        <input type="submit" value="View">
+    </form>
+    <form action="/players/{{ player.id }}/edit">
+        <input type="submit" value="Edit">
+    </form>
+</section>
+
+{% endfor %}
 
 {% endblock %}

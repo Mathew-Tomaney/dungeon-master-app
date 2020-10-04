@@ -2,10 +2,38 @@
 
 {% block content %}
 
-{{ player }}
+<section>
+    <h2> {{ player.full_name() }} </h2>
+    <p>E-mail: {{ player.email }}</p>
+    
+    <form action="/players/{{ player.id }}/edit">
+        <input type="submit" value="Edit">
+    </form>
+</section>
 
-{{ parties }}
+<section>
+    <h3>Playing: </h3>
+    {% for character in characters %}
+    <div>
+        <p>Character: {{ character.name }} <br> in <br> Party: {{ character.party.name }} </p>
+        <p>Next game: {{ character.party.next_game }}</p>
+        <form action="/characters/{{ character.id }}">
+            <input type="submit" value="View Character">
+        </form>
+        <form action="/parties/{{ character.party.id }}">
+            <input type="submit" value="View Party">
+        </form>
+    </div>
+    {% endfor %}
+</section>
 
-{{ characters }}
+
+<h4>Delete Player?</h4>
+<p>Caution! This will remove all player details and associated Characters.</p>
+<form action="/players/{{ player.id }}/delete" method="POST">
+    <label for="delete">Are you sure?</label>
+    <input type="submit" id="delete" name="delete" value="Yes! Delete All.">
+</form>
+
 
 {% endblock %}

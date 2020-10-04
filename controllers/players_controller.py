@@ -31,8 +31,8 @@ def create_player():
     last_name = request.form["last_name"]
     email = request.form["email"]
     new_player = Player(first_name, last_name, email)
-    new_player_with_id = player_repository.save(new_player)
-    return redirect("players/<new_player_with_id.id>")
+    player_repository.save(new_player)
+    return redirect("/players")
 
 # edit
 @players_blueprint.route("/players/<id>/edit")
@@ -48,7 +48,7 @@ def update_player(id):
     email = request.form["email"]
     player = Player(first_name, last_name, email, id)
     player_repository.update(player)
-    return redirect("/players/<id>")
+    return redirect("/players")
 
 # delete
 @players_blueprint.route("/players/<id>/delete", methods=["POST"])
