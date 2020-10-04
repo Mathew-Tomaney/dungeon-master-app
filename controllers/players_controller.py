@@ -31,8 +31,8 @@ def create_player():
     last_name = request.form["last_name"]
     email = request.form["email"]
     new_player = Player(first_name, last_name, email)
-    player_repository.save(new_player)
-    return redirect("players/<new_player.id>")
+    new_player_with_id = player_repository.save(new_player)
+    return redirect("players/<new_player_with_id.id>")
 
 # edit
 @players_blueprint.route("/players/<id>/edit")
