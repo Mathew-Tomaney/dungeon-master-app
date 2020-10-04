@@ -48,10 +48,10 @@ def update(party):
     values = [party.name, party.next_game, party.id]
     run_sql(sql, values)
 
-def characters(party):
+def characters(id):
     characters_in_party = []
     sql = "SELECT characters.* FROM characters WHERE party_id = %s"
-    values = [party.id]
+    values = [id]
     results = run_sql(sql, values)
     for result in results:
         player = player_repository.select(result['player_id'])
@@ -59,10 +59,10 @@ def characters(party):
         characters_in_party.append(character)
     return characters_in_party
 
-def players(party):
+def players(id):
     players_in_party = []
     sql = "SELECT players.* FROM players INNER JOIN characters ON characters.player_id = players.id WHERE characters.party_id = %s"
-    values = [party.id]
+    values = [id]
     results = run_sql(sql, values)
     for result in results:
         player = Player(result["first_name"], result["last_name"], result["email"], result["id"])
