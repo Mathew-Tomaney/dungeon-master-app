@@ -30,19 +30,19 @@ player_repository.save(player_3)
 player_4 = Player("Joe", "Manganiello", "werewolvesrule@vampiressuck.com")
 player_repository.save(player_4)
 
-character_1 = Character("Duirric 'Dusty' Glenfoot", "Halfling", "Rogue", 11, player_1, party_1)
+character_1 = Character("Duirric 'Dusty' Glenfoot", "Halfling", "Rogue", 11, 18, True, 80, 20, 12, "Brave: advantage against frightened", "Normal", "Thieves Cant", None, "The law", 0, player_1, party_1)
 character_repository.save(character_1)
 
-character_2 = Character("Argyle", "Tiefling", "Sorcerer", 5, player_2, party_2)
+character_2 = Character("Argyle", "Tiefling", "Sorcerer", 5, 12, True, 90, 18, 16, "Immune to Fire", "Darkvision", "Infernal", None, "Lawful Good Alignment", 0, player_2, party_2)
 character_repository.save(character_2)
 
-character_3 = Character("Thundrik Hopphammer", "Dwarf", "Cleric", 5, player_1, party_2)
+character_3 = Character("Thundrik Hopphammer", "Dwarf", "Cleric", 5, 20, True, 100, 20, 16, "Immune to Poison", "Darkvision", "Gnomish", "Guidance on Touch", "Goblins", 0, player_1, party_2)
 character_repository.save(character_3)
 
-character_4 = Character("Droop", "Goblin", "Fighter", 1, player_3, party_2)
+character_4 = Character("Droop", "Goblin", "Fighter", 1, 12, False, 70, 10, 10, None, "Normal", "Hobgoblin", None, "Dwarves", 1, player_3, party_2)
 character_repository.save(character_4)
 
-character_5 = Character("Stormchaser", "Goliath", "Paladin", 12, player_4, party_1)
+character_5 = Character("Stormchaser", "Goliath", "Paladin", 11, 21, True, 200, 14, 16, "Immune to Cold", "Truesight 60ft", "Giant", "Aura of Protection 10ft", "Criminals", 1, player_2, party_1)
 character_repository.save(character_5)
 
 pdb.set_trace()
