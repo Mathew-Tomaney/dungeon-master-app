@@ -57,7 +57,7 @@ def characters(id):
     for result in results:
         party = party_repository.select(id)
         player = player_repository.select(result['player_id'])
-        character = Character(result['name'], result['race'], result['archetype'], result['level'], player, party, result['id'])
+        character = Character(result['name'], result['race'], result['archetype'], result['level'], result['armour'], result['magic'], result['weight'], result['perception'], result['insight'], result['immunity'], result['vision'], result['language'], result['aura'], result['enmity'], result['exhaustion'], player, party, result['id'])
         characters_in_party.append(character)
     return characters_in_party
 

@@ -9,8 +9,8 @@ import repos.player_repository as player_repository
 
 
 def save(character):
-    sql = "INSERT INTO characters (name, race, archetype, level, player_id, party_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
-    values = [character.name, character.race, character.archetype, character.level, character.player.id, character.party.id]
+    sql = "INSERT INTO characters (name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING *"
+    values = [character.name, character.race, character.archetype, character.level, character.armour, character.magic, character.weight, character.perception, character.insight, character.immunity, character.vision, character.language, character.aura, character.enmity, character.exhaustion, character.player.id, character.party.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     character.id = id
@@ -25,7 +25,7 @@ def select_all():
     for result in results:
         player = player_repository.select(result["player_id"])
         party = party_repository.select(result["party_id"])
-        character = Character(result['name'], result['race'], result['archetype'], result['level'], player, party, result['id'])
+        character = Character(result['name'], result['race'], result['archetype'], result['level'], result['armour'], result['magic'], result['weight'], result['perception'], result['insight'], result['immunity'], result['vision'], result['language'], result['aura'], result['enmity'], result['exhaustion'], player, party, result['id'])
         characters.append(character)
     return characters
 
@@ -38,7 +38,7 @@ def select(id):
     party = party_repository.select(result["party_id"])
 
     if result is not None:
-        character = Character(result['name'], result['race'], result['archetype'], result['level'], player, party, result['id'])
+        character = Character(result['name'], result['race'], result['archetype'], result['level'], result['armour'], result['magic'], result['weight'], result['perception'], result['insight'], result['immunity'], result['vision'], result['language'], result['aura'], result['enmity'], result['exhaustion'], player, party, result['id'])
     return character
 
 def delete_all():
@@ -51,6 +51,6 @@ def delete_id(id):
     run_sql(sql, values)
 
 def update(character):
-    sql = "UPDATE characters SET (name, race, archetype, level, player_id, party_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [character.name, character.race, character.archetype, character.level, character.player.id, character.party.id]
+    sql = "UPDATE characters SET (name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [character.name, character.race, character.archetype, character.level, character.armour, character.magic, character.weight, character.perception, character.insight, character.immunity, character.vision, character.language, character.aura, character.enmity, character.exhaustion, character.player.id, character.party.id]
     run_sql(sql, values)
