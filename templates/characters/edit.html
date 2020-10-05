@@ -30,7 +30,7 @@
         </select>
         <label for="player_id">Player Name: </label>
         <select name="player_id" id="player_id">
-            <option value="{{ character.player.id }}" selected="selected">{{ character.player.name }}</option>
+            <option value="{{ character.player.id }}" selected="selected">{{ character.player.full_name() }}</option>
             {% for player in players %}
                 {% if player.id != character.player.id %}
                 <option value="{{ player.id }}">{{ player.full_name() }}</option>
@@ -80,12 +80,12 @@
         <input type="text" id="enmity" name="enmity" value="{{ character.enmity }}">
         <label for="exhaustion">Exhaustion Level: </label>
         <select name="exhaustion" id="exhaustion">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="{{ character.exhaustion }}">{{ character.exhaustion }}</option>
+            {% for exhaustion in range(6) %}
+                {% if exhaustion != character.exhaustion %}
+                    <option value="{{ exhaustion }}">{{ exhaustion }}</option>
+                {% endif %}
+            {% endfor %}
         </select>
         <br>
         <input type="submit" value="Update" >
