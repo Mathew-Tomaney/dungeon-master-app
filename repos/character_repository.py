@@ -54,3 +54,13 @@ def update(character):
     sql = "UPDATE characters SET (name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player_id, party_id) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [character.name, character.race, character.archetype, character.level, character.armour, character.magic, character.weight, character.perception, character.insight, character.immunity, character.vision, character.language, character.aura, character.enmity, character.exhaustion, character.player.id, character.party.id, character.id]
     run_sql(sql, values)
+
+def check(name):
+    already_exists = False
+    sql = "SELECT * FROM characters WHERE name = %s"
+    values = [name]
+    result = run_sql(sql, values)[0]
+    
+    if result is not None:
+        already_exists = True
+    return already_exists
