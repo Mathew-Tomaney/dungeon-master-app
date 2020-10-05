@@ -11,7 +11,9 @@ characters_blueprint = Blueprint("characters", __name__)
 @characters_blueprint.route("/characters")
 def characters():
     characters = character_repository.select_all()
-    return render_template("characters/index.html", characters=characters)
+    players = player_repository.select_all()
+    parties = party_repository.select_all()
+    return render_template("characters/index.html", characters=characters, players=players, parties=parties)
 
 # show
 @characters_blueprint.route("/characters/<id>")
@@ -58,7 +60,9 @@ def create_character():
 @characters_blueprint.route("/characters/<id>/edit")
 def edit_character(id):
     character = character_repository.select(id)
-    return render_template("/characters/edit.html", character=character)
+    parties = party_repository.select_all()
+    players = player_repository.select_all()
+    return render_template("/characters/edit.html", character=character, players=players, parties=parties)
 
 # update
 @characters_blueprint.route("/characters/<id>", methods=["POST"])
@@ -78,8 +82,10 @@ def update_character(id):
     aura = request.form["aura"]
     enmity = request.form["enmity"]
     exhaustion = request.form["exhaustion"]
-    player = request.form["player"]
-    party = request.form["party"]
+    player_id = request.form["player_id"]
+    party_id = request.form["party_id"]
+    player = player_repository.select(player_id)
+    party = party_repository.select(party_id)
     character = Character(name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party)
     character_repository.update(character)
     return show_characters(character.id)
@@ -89,3 +95,15 @@ def update_character(id):
 def delete_character(id):
     character_repository.delete_id(id)
     return redirect("/characters")
+
+# @characters_blueprint.route("/characters/check_name/<name_choice>")
+# def check_name():
+#     name_choice = request.form["name_choice"]
+#     player_id = request.form["player_id"]
+#     party_id = request.form["party_id"]
+#     player = player_repository.select(player_id)
+#     party = party_repository.select(party_id)
+#     name_exists = character_repository.check(name_choice)
+#     if name_exists is False:
+#         return redirect("/characters/new.html")
+#     return render_template("/characters/<id>")    

@@ -6,6 +6,7 @@ from models.party import Party
 
 import repos.party_repository as party_repository
 import repos.player_repository as player_repository
+import repos.character_repository as character_repository
 
 
 def save(character):
@@ -55,12 +56,9 @@ def update(character):
     values = [character.name, character.race, character.archetype, character.level, character.armour, character.magic, character.weight, character.perception, character.insight, character.immunity, character.vision, character.language, character.aura, character.enmity, character.exhaustion, character.player.id, character.party.id, character.id]
     run_sql(sql, values)
 
-def check(name):
-    already_exists = False
-    sql = "SELECT * FROM characters WHERE name = %s"
-    values = [name]
-    result = run_sql(sql, values)[0]
-    
-    if result is not None:
-        already_exists = True
-    return already_exists
+def check(new_name):
+    characters = character_repository.select_all()
+    for character in characters:
+        if character.name == new_name:
+            return character.id
+    return False
