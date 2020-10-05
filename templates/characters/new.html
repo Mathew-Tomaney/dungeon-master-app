@@ -8,8 +8,22 @@
 <br>
 <form action="/characters" method="POST">
     <div>
+        <label for="party">Party Member in: </label>
+        <select name="party" id="party">
+            {% for party in parties %}
+            <option value="{{ party }}">{{ party.name }}</option>
+            {% endfor %}
+        </select>
+        <label for="player">Player Name: </label>
+        <select name="player" id="player">
+            {% for player in players %}
+            <option value="{{ player }}">{{ player.full_name() }}</option>
+            {% endfor %}
+        </select>
+        <br>
         <label for="name">Name: </label>
         <input type="text" id="name" name="name">
+        <br>
         <label for="race">Race: </label>
         <input type="text" id="race" name="race">
         <label for="archetype">Class: </label>
@@ -19,6 +33,11 @@
         <br>
         <label for="armour">Armour: </label>
         <input type="text" id="armour" name="armour">
+        <label for="magic">Can Do Magical Damage?: </label>
+        <select name="magic" id="magic">
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+        </select>
         <label for="weight">Weight: </label>
         <input type="text" id="weight" name="weight">
         <label for="perception">Passive Perception: </label>
@@ -30,28 +49,23 @@
         <input type="text" id="immunity" name="immunity">
         <label for="vision">Vision Types: </label>
         <input type="text" id="vision" name="vision">
-        <label for="languages">Languages: </label>
-        <input type="text" id="languages" name="languages">
+        <label for="language">Languages: </label>
+        <input type="text" id="language" name="language">
         <label for="aura">Abilities affecting Party: </label>
         <input type="text" id="aura" name="aura">
         <br>
         <label for="enmity">Enmities towards: </label>
         <input type="text" id="enmity" name="enmity">
         <label for="exhaustion">Exhaustion Level: </label>
-        <input type="text" id="exhaustion" name="exhaustion">
+        <select name="exhaustion" id="exhaustion">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
         <br>
-        <label for="party">Party Member in: </label>
-        <select name="party" id="party">
-            {% for party in parties %}
-            <option value="{{ party }}">{{ party.name }}</option>
-            {% endfor %}
-        </select>
-        <label for="player">Player Name: </label>
-        <select name="player" id="player">
-            {% for player in players %}
-            <option value="{{ player }}">{{ player.name }}</option>
-            {% endfor %}
-        </select>
         <input type="submit" value="Create">
     </div>
 </form>

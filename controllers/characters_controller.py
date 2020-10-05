@@ -26,7 +26,7 @@ def show_characters(id):
 def new_character():
     players = player_repository.select_all()
     parties = party_repository.select_all()
-    return render_template("/characters/new.html" players=players parties=parties)
+    return render_template("/characters/new.html", players=players, parties=parties)
 
 # create
 @characters_blueprint.route("/characters", methods=["POST"])
