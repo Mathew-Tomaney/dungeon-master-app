@@ -47,7 +47,7 @@ def edit_party(id):
 def update_party(id):
     name = request.form["name"]
     next_game = request.form["next_game"]
-    party = parties(name, next_game, id)
+    party = Party(name, next_game, id)
     party_repository.update(party)
     return show_parties(party.id)
 
