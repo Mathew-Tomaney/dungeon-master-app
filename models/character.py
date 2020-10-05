@@ -1,5 +1,5 @@
 class Character:
-    def __init__(self, name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion=0, player, party, id=None):
+    def __init__(self, name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party, id=None):
         self.name = name
         self.race = race
         self.archetype = archetype
