@@ -3,3 +3,4 @@ class Party:
         self.name = name
         self.next_game = next_game
         self.id = id
+
