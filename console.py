@@ -48,4 +48,7 @@ character_repository.save(character_5)
 character_6 = Character("Stormchaser", "Goliath", "Paladin/Fighter", 11, 21, True, 200, 14, 16, "Immune to Cold", "Truesight 60ft", "Giant", "Aura of Protection 10ft", "Criminals", 1, player_2, party_1, 5) 
 character_repository.update(character_6)
 
+# character_7 = Character("Thundrik Hopphammer", "Human", "Warlock", 6, 15, False, 100, 17, 16, "Immune to Poison", "Darkvision", "Gnomish", "Guidance on Touch", "Goblins", 0, player_2, party_1)
+# character_repository.save(character_7)
+
 pdb.set_trace()
