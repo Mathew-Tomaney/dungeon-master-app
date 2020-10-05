@@ -21,6 +21,17 @@ CREATE TABLE characters (
     race VARCHAR(255),
     archetype VARCHAR(255),
     level INT,
+    armour INT,
+    magic BOOLEAN, 
+    weight INT,
+    perception INT,
+    insight INT,
+    immunity VARCHAR(255),
+    vision VARCHAR(255),
+    language VARCHAR(255),
+    aura VARCHAR(255),
+    enmity VARCHAR(255), 
+    exhaustion INT,
     player_id SERIAL REFERENCES players(id) ON DELETE CASCADE,
     party_id SERIAL REFERENCES parties(id) ON DELETE CASCADE
 );
