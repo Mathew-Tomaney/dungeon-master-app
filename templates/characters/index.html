@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h2>Characters</h2>
+<form action="/characters/new">
+    <input type="submit" value="Create New Character">
+</form>
+{% for character in characters %}
+
+<section>
+    <p>Name: {{ character.name }}</p>
+    <p>Race: {{ character.race }}</p>
+    <p>Class: {{ character.archetype }}</p>
+    <p>Level: {{ character.level}}</p>
+
+    <form action="/characters/{{ character.id }}">
+        <input type="submit" value="View">
+    </form>
+    <form action="/characters/{{ character.id }}/edit">
+        <input type="submit" value="Edit">
+    </form>
+</section>
+
+{% endfor %}
+
+{% endblock %}

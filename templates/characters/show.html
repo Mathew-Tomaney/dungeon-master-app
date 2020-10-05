@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/characters">Go Back</a>
+<section>
+    <h2> {{ character.name }} </h2>
+    <p> Race: {{ character.race }} </p>
+    <p> Class: {{ character.archetype }} </p>
+    <p> Level: {{ character.level }} </p>
+    <p> Armour: {{ character.armour }} </p>
+    <p> Magical Damage: {{ character.magic }} </p>
+    <p> Weight: {{ character.weight }} </p>
+    <p> Passive Perception: {{ character.perception }} </p>
+    <p> Passive Insight: {{ character.insight }} </p>
+    <p> Resitances or Immunities: {{ character.immunity }} </p>
+    <p> Vision Type: {{ character.vision }} </p>
+    <p> Languages: Common, {{ character.race }}, {{ character.language }} </p>
+    <p> Abilities affecting Party: {{ character.aura }} </p>
+    <p> Enmities towards: {{ character.enmity }} </p>
+    <p> Exhaustion Level: {{ character.exhaustion }} </p>
+    <br>
+    <p> Party Member in: {{ character.party.name }} </p>
+    <p> Player Name: {{ character.player.full_name() }} </p>
+    
+    <form action="/characters/{{ character.id }}/edit">
+        <input type="submit" value="Edit">
+    </form>
+</section>
+
+<section>
+    
+</section>
+<br>
+<br>
+<br>
+
+<h4>Delete character?</h4>
+<form action="/characters/{{ character.id }}/delete" method="POST">
+    <label for="delete">Are you sure?</label>
+    <input type="submit" id="delete" name="delete" value="Yes! Delete.">
+</form>
+
+
+{% endblock %}

@@ -17,7 +17,7 @@ CREATE TABLE parties (
 
 CREATE TABLE characters (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
+    name VARCHAR(255) UNIQUE,
     race VARCHAR(255),
     archetype VARCHAR(255),
     level INT,

@@ -17,7 +17,7 @@ def characters():
 @characters_blueprint.route("/characters/<id>")
 def show_characters(id):
     character = character_repository.select(id)
-    player = player_repository.select(charcter.id)
+    player = player_repository.select(character.id)
     party = party_repository.select(character.id)
     return render_template("/characters/show.html", character=character, player=player, party=party)
 
