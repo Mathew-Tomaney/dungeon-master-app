@@ -16,7 +16,7 @@
     
     {% for character in characters %}
         <div>
-            <p>Character: {{ character.name }} <br> played by <br> Player: {{ character.player.first_name }} </p>
+            <p>{{ character.name }} the {{ character.race }} {{ character.archetype }}, level {{ character.level }} <br> played by {{ character.player.first_name }} </p>
             <form action="/characters/{{ character.id }}">
                 <input type="submit" value="View Character">
             </form>
