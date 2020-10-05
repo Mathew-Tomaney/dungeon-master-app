@@ -51,6 +51,6 @@ def delete_id(id):
     run_sql(sql, values)
 
 def update(character):
-    sql = "UPDATE characters SET (name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [character.name, character.race, character.archetype, character.level, character.armour, character.magic, character.weight, character.perception, character.insight, character.immunity, character.vision, character.language, character.aura, character.enmity, character.exhaustion, character.player.id, character.party.id]
+    sql = "UPDATE characters SET (name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player_id, party_id) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [character.name, character.race, character.archetype, character.level, character.armour, character.magic, character.weight, character.perception, character.insight, character.immunity, character.vision, character.language, character.aura, character.enmity, character.exhaustion, character.player.id, character.party.id, character.id]
     run_sql(sql, values)

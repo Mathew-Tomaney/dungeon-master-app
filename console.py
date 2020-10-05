@@ -45,4 +45,7 @@ character_repository.save(character_4)
 character_5 = Character("Stormchaser", "Goliath", "Paladin", 11, 21, True, 200, 14, 16, "Immune to Cold", "Truesight 60ft", "Giant", "Aura of Protection 10ft", "Criminals", 1, player_2, party_1)
 character_repository.save(character_5)
 
+character_6 = Character("Stormchaser", "Goliath", "Paladin/Fighter", 11, 21, True, 200, 14, 16, "Immune to Cold", "Truesight 60ft", "Giant", "Aura of Protection 10ft", "Criminals", 1, player_2, party_1, 5) 
+character_repository.update(character_6)
+
 pdb.set_trace()
