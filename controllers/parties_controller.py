@@ -1,6 +1,6 @@
 from flask import Blueprint, Flask, redirect, render_template, request
 
-from models.parties import Party
+from models.party import Party
 import repos.party_repository as party_repository
 
 
@@ -9,50 +9,48 @@ parties_blueprint = Blueprint("parties", __name__)
 # index
 @parties_blueprint.route("/parties")
 def parties():
-    parties = parties_repository.select_all()
+    parties = party_repository.select_all()
     return render_template("parties/index.html", parties=parties)
 
 # show
-@partiess_blueprint.route("/partiess/<id>")
+@parties_blueprint.route("/partiess/<id>")
 def show_parties(id):
-    parties = parties_repository.select(id)
-    parties = parties_repository.parties(id)
-    characters = parties_repository.characters(id)
-    return render_template("/partiess/show.html", parties=parties, parties=parties, characters=characters)
+    party = party_repository.select(id)
+    players = players_repository.players(id)
+    characters = party_repository.characters(id)
+    return render_template("/parties/show.html", party=party, players=players, characters=characters)
 
 # new
-@partiess_blueprint.route("/partiess/new")
-def new_parties():
-    return render_template("/partiess/new.html")
+@parties_blueprint.route("/parties/new")
+def new_party():
+    return render_template("/parties/new.html")
 
 # create
-@partiess_blueprint.route("/partiess", methods=["POST"])
-def create_parties():
-    first_name = request.form["first_name"]
-    last_name = request.form["last_name"]
-    email = request.form["email"]
-    new_parties = parties(first_name, last_name, email)
-    parties_repository.save(new_parties)
-    return redirect("/partiess")
+@parties_blueprint.route("/parties", methods=["POST"])
+def create_party():
+    name = request.form["name"]
+    next_game = request.form["next_game"]
+    new_party = Party(name, next_game)
+    party_repository.save(new_party)
+    return redirect("/parties")
 
 # edit
-@partiess_blueprint.route("/partiess/<id>/edit")
-def edit_parties(id):
-    parties = parties_repository.select(id)
-    return render_template("/partiess/edit.html", parties=parties)
+@parties_blueprint.route("/parties/<id>/edit")
+def edit_party(id):
+    party = party_repository.select(id)
+    return render_template("/parties/edit.html", party=party)
 
 # update
-@partiess_blueprint.route("/partiess/<id>", methods=["POST"])
-def update_parties(id):
-    first_name = request.form["first_name"]
-    last_name = request.form["last_name"]
-    email = request.form["email"]
-    parties = parties(first_name, last_name, email, id)
-    parties_repository.update(parties)
-    return show_parties(parties.id)
+@parties_blueprint.route("/parties/<id>", methods=["POST"])
+def update_party(id):
+    name = request.form["name"]
+    next_game = request.form["next_game"]
+    party = parties(name, next_game, id)
+    party_repository.update(party)
+    return show_parties(party.id)
 
 # delete
-@partiess_blueprint.route("/partiess/<id>/delete", methods=["POST"])
-def delete_parties(id):
-    parties_repository.delete_id(id)
-    return redirect("/partiess")
+@parties_blueprint.route("/parties/<id>/delete", methods=["POST"])
+def delete_party(id):
+    party_repository.delete_id(id)
+    return redirect("/parties")
