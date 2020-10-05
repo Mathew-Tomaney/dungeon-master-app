@@ -86,7 +86,7 @@ def update_character(id):
     party_id = request.form["party_id"]
     player = player_repository.select(player_id)
     party = party_repository.select(party_id)
-    character = Character(name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party)
+    character = Character(name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party, id)
     character_repository.update(character)
     return show_characters(character.id)
 
