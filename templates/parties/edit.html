@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Update Party</h2>
+<a href="/parties/{{ party.id }}">Go Back</a>
+<br>
+<br>
+
+<form action="/parties/{{ party.id }}" method="POST">
+    <div>
+        <label for="name">First name: </label>
+        <input type="text" id="name" name="name" value="{{ party.name }}">
+        <label for="next_game">Last name: </label>
+        <input type="text" id="next_game" name="next_game" value="{{ party.next_game }}">
+        <input type="submit" value="Update">
+    </div>
+</form>
+
+{% endblock %}
