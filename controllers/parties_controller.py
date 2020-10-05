@@ -20,7 +20,8 @@ def show_parties(id):
     party = party_repository.select(id)
     players = party_repository.players(id)
     characters = party_repository.characters(id)
-    return render_template("/parties/show.html", party=party, players=players, characters=characters)
+    num_of_players = len(party_repository.players(party.id))
+    return render_template("/parties/show.html", party=party, players=players, characters=characters, num_of_players=num_of_players)
 
 # new
 @parties_blueprint.route("/parties/new")
