@@ -9,7 +9,7 @@ import repos.player_repository as player_repository
 
 
 def save(character):
-    sql = "INSERT INTO characters (name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING *"
+    sql = "INSERT INTO characters (name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player_id, party_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING *"
     values = [character.name, character.race, character.archetype, character.level, character.armour, character.magic, character.weight, character.perception, character.insight, character.immunity, character.vision, character.language, character.aura, character.enmity, character.exhaustion, character.player.id, character.party.id]
     results = run_sql(sql, values)
     id = results[0]['id']
