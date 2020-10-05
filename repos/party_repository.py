@@ -4,6 +4,7 @@ from models.party import Party
 from models.character import Character
 from models.player import Player
 import repos.player_repository as player_repository
+import repos.party_repository as party_repository
 
 def save(party):
     sql = "INSERT INTO parties (name, next_game) VALUES (%s, %s) RETURNING *"
@@ -54,6 +55,7 @@ def characters(id):
     values = [id]
     results = run_sql(sql, values)
     for result in results:
+        party = party_repository.select(id)
         player = player_repository.select(result['player_id'])
         character = Character(result['name'], result['race'], result['archetype'], result['level'], player, party, result['id'])
         characters_in_party.append(character)

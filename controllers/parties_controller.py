@@ -2,6 +2,8 @@ from flask import Blueprint, Flask, redirect, render_template, request
 
 from models.party import Party
 import repos.party_repository as party_repository
+# import repos.player_repository as player_repository
+# import repos.character_repository as character_repository
 
 
 parties_blueprint = Blueprint("parties", __name__)
@@ -13,10 +15,10 @@ def parties():
     return render_template("parties/index.html", parties=parties)
 
 # show
-@parties_blueprint.route("/partiess/<id>")
+@parties_blueprint.route("/parties/<id>")
 def show_parties(id):
     party = party_repository.select(id)
-    players = players_repository.players(id)
+    players = party_repository.players(id)
     characters = party_repository.characters(id)
     return render_template("/parties/show.html", party=party, players=players, characters=characters)
 

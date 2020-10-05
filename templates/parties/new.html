@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2> Create a new Party</h2>
+<a href="/parties">Go Back</a>
+<br>
+<br>
+<form action="/parties" method="POST">
+    <div>
+        <label for="name">Party name: </label>
+        <input type="text" id="name" name="name">
+        <label for="next_game">Next Game: </label>
+        <input type="text" id="next_game" name="next_game">
+        <input type="submit" value="Create">
+    </div>
+</form>
+
+{% endblock %}
