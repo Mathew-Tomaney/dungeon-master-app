@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/parties">Go Back</a>
+<section>
+    <h2> {{ party.name }} </h2>
+    <p>Next Game: {{ party.next_game }}</p>
+    
+    <form action="/parties/{{ party.id }}/edit">
+        <input type="submit" value="Edit">
+    </form>
+</section>
+
+<section>
+    <h3>Characters in party: </h3>
+    
+    {% for character in characters %}
+        <div>
+            <p>Character: {{ character.name }} <br> played by <br> Player: {{ character.player.first_name }} </p>
+            <form action="/characters/{{ character.id }}">
+                <input type="submit" value="View Character">
+            </form>
+            <form action="/players/{{ character.player.id }}">
+                <input type="submit" value="View Player">
+            </form>
+        </div>
+    {% endfor %}
+    {% if characters == [] %}
+        <p>No characters/players yet!</p>
+    {% endif %}
+</section>
+<br>
+<br>
+<br>
+
+<h4>Delete Party?</h4>
+<p>Caution! This will remove all party details and associated Characters. Edit Characters to assign them to a new party first!</p>
+<form action="/parties/{{ party.id }}/delete" method="POST">
+    <label for="delete">Are you sure?</label>
+    <input type="submit" id="delete" name="delete" value="Yes! Delete All.">
+</form>
+
+
+{% endblock %}
