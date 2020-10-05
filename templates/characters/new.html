@@ -12,8 +12,8 @@
         <input type="text" id="name" name="name">
         <label for="race">Race: </label>
         <input type="text" id="race" name="race">
-        <label for="class">Class: </label>
-        <input type="text" id="class" name="class">
+        <label for="archetype">Class: </label>
+        <input type="text" id="archetype" name="archetype">
         <label for="level">Level: </label>
         <input type="text" id="level" name="level">
         <br>
@@ -41,10 +41,17 @@
         <input type="text" id="exhaustion" name="exhaustion">
         <br>
         <label for="party">Party Member in: </label>
-        <input type="text" id="party" name="party">
+        <select name="party" id="party">
+            {% for party in parties %}
+            <option value="{{ party }}">{{ party.name }}</option>
+            {% endfor %}
+        </select>
         <label for="player">Player Name: </label>
-        <input type="text" id="player" name="player">
-    
+        <select name="player" id="player">
+            {% for player in players %}
+            <option value="{{ player }}">{{ player.name }}</option>
+            {% endfor %}
+        </select>
         <input type="submit" value="Create">
     </div>
 </form>
