@@ -60,8 +60,23 @@ def edit_character(id):
 @characters_blueprint.route("/characters/<id>", methods=["POST"])
 def update_character(id):
     name = request.form["name"]
-    next_game = request.form["next_game"]
-    character = character(name, next_game, id)
+    race = request.form["race"]
+    archetype = request.form["archetype"]
+    level = request.form["level"]
+    armour = request.form["armour"]
+    magic = request.form["magic"]
+    weight = request.form["weight"]
+    perception = request.form["perception"]
+    insight = request.form["insight"]
+    immunity = request.form["immunity"]
+    vision = request.form["vision"]
+    language = request.form["language"]
+    aura = request.form["aura"]
+    enmity = request.form["enmity"]
+    exhaustion = request.form["exhaustion"]
+    player = request.form["player"]
+    party = request.form["party"]
+    character = Character(name, race, archetype, level, armour, magic, weight, perception, insight, immunity, vision, language, aura, enmity, exhaustion, player, party)
     character_repository.update(character)
     return show_characters(character.id)
 
