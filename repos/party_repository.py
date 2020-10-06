@@ -105,19 +105,24 @@ def all_contact(id):
         contacts.append(player.email)
     return contacts
 
-# def highest_perception(id):
-# def highest_insight(id):
-# def total_weight(id):
+def highest_perception(id):
+    highest = 0
+    characters = party_repository.characters(id)
+    skills = []
+    for character in characters:
+        skills.append(character.perception)
+    skills.sort()
+    if skills is not None:
+        highest = skills[-1]
+    return highest
 
-# def party_magic(id):
-# def party_vision(id):
-
-
-
-# def all_immunities(id):
-# def all_auras(id):
-# def all_enmities(id):
-# def all_languages(id):
-#     for
-#     if language is not in languages:
-#         append
+def highest_insight(id):
+    highest = 0
+    characters = party_repository.characters(id)
+    skills = []
+    for character in characters:
+        skills.append(character.insight)
+    skills.sort()
+    if skills is not None:
+        highest = skills[-1]
+    return highest

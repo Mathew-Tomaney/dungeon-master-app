@@ -6,8 +6,11 @@
     <h2> {{ party.name }} </h2>
     <p>Next Game: {{ party.next_game }}</p>
     <p>Average Level: {{ average_level }}</p>
-    <p>Lowest Armour: {{ lowest_armour }} : {% for character in characters %}{% if lowest_armour == character.armour %}  <br> ( {{ character.name }} ) {% endif %} {% endfor %}</p>
-    <!-- <p>Lowest Armour: {{ lowest_armour }} {% for character in characters %}{% if lowest_armour == character.armour %} : {{ character.name }} {% endif %} {% endfor %}</p> -->
+    <p>Lowest Armour: {{ lowest_armour }} <br> {% for character in characters %}{% if lowest_armour == character.armour %}  <br> - {{ character.name }} {% endif %} {% endfor %}</p>
+
+    <p>Highest Passive Perception: {{ highest_perception }} <br> {% for character in characters %}{% if highest_perception == character.perception %} <br> - {{ character.name }} {% endif %} {% endfor %}</p>
+
+    <p>Highest Passive Insight: : {{ highest_insight }} <br> {% for character in characters %}{% if highest_insight == character.insight %} <br> - {{ character.name }} {% endif %} {% endfor %}</p>
 
     
     <form action="/parties/{{ party.id }}/edit">
