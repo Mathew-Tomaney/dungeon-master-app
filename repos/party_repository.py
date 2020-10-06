@@ -79,3 +79,14 @@ def party_level(id):
         levels.append(character.level)
         party_level = sum(levels)/len(levels)
     return party_level
+
+def lowest_armour(id):
+    lowest = 0
+    total = []
+    characters = party_repository.characters(id)
+    for character in characters:
+        total.append(character.armour)
+    total.sort()
+    if total is not None:
+        lowest = total[0] 
+    return lowest
