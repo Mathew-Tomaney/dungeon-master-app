@@ -26,11 +26,11 @@ def show_characters(id):
     return render_template("/characters/show.html", character=character, player=player, party=party)
 
 # new
-@characters_blueprint.route("/characters/new")
-def new_character():
+@characters_blueprint.route("/characters/new/<name_choice>")
+def new_character(name_choice):
     players = player_repository.select_all()
     parties = party_repository.select_all()
-    return render_template("/characters/new.html", players=players, parties=parties)
+    return render_template("/characters/new.html", players=players, parties=parties, name_choice=name_choice)
 
 # create
 @characters_blueprint.route("/characters", methods=["POST"])
@@ -101,13 +101,12 @@ def delete_character(id):
 @characters_blueprint.route("/characters/check", methods=["POST"])
 def check_name():
     name_choice = request.form["name"]
-    # player_id = request.form["player_id"]
-    # party_id = request.form["party_id"]
-    # player = player_repository.select(player_id)
-    # party = party_repository.select(party_id)
     name_exists_id = character_repository.check(name_choice)
     if name_exists_id is False and name_choice is not "":
-        return redirect("/characters/new")
+        return redirect(f"/characters/new/{name_choice}")
+        # players = player_repository.select_all()
+        # parties = party_repository.select_all()
+        # return render_template("/characters/new.html", players=players, parties=parties, name_choice=name_choice)
     else: flash("Character name is not available")
     return redirect("/characters")
     
