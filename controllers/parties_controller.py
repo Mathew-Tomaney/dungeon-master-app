@@ -24,7 +24,8 @@ def show_parties(id):
     num_of_players = len(party_repository.players(party.id))
     average_level = party_repository.party_level(id)
     lowest_armour = party_repository.lowest_armour(id)
-    return render_template("/parties/show.html", party=party, players=players, characters=characters, num_of_players=num_of_players, average_level=average_level, lowest_armour=lowest_armour)
+    all_contacts = party_repository.all_contact(id)
+    return render_template("/parties/show.html", party=party, players=players, characters=characters, num_of_players=num_of_players, average_level=average_level, lowest_armour=lowest_armour, all_contacts=all_contacts)
 
 # new
 @parties_blueprint.route("/parties/new")

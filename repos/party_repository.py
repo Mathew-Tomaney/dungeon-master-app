@@ -97,3 +97,10 @@ def all_games():
     for party in parties:
         upcoming_games[party.next_game] = [party.name]
     return upcoming_games 
+
+def all_contact(id):
+    players = party_repository.players(id)
+    contacts =[]
+    for player in players:
+        contacts.append(player.email)
+    return contacts
