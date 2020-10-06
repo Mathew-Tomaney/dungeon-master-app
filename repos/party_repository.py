@@ -78,7 +78,7 @@ def party_level(id):
     for character in characters:
         levels.append(character.level)
         party_level = sum(levels)/len(levels)
-    return party_level
+    return round(party_level, 1)
 
 def lowest_armour(id):
     lowest = 0
