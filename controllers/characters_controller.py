@@ -99,13 +99,13 @@ def delete_character(id):
 @characters_blueprint.route("/characters/check", methods=["POST"])
 def check_name():
     name_choice = request.form["name"]
-    player_id = request.form["player_id"]
-    party_id = request.form["party_id"]
-    player = player_repository.select(player_id)
-    party = party_repository.select(party_id)
+    # player_id = request.form["player_id"]
+    # party_id = request.form["party_id"]
+    # player = player_repository.select(player_id)
+    # party = party_repository.select(party_id)
     name_exists_id = character_repository.check(name_choice)
     if name_exists_id is False and name_choice is not "":
         return redirect("/characters/new")
-    else: flash("Character name is already taken")
+    else: flash("Character name is not available")
     return redirect("/characters")
     
