@@ -1,4 +1,4 @@
-from flask import Blueprint, Flask, redirect, render_template, request
+from flask import Blueprint, Flask, redirect, render_template, request, flash
 
 from models.character import Character
 import repos.character_repository as character_repository
@@ -104,8 +104,8 @@ def check_name():
     player = player_repository.select(player_id)
     party = party_repository.select(party_id)
     name_exists_id = character_repository.check(name_choice)
-    if name_exists_id is False:
+    if name_exists_id is False and name_choice is not "":
         return redirect("/characters/new")
-    # return redirect("/characters")
-    return render_template("/characters/index.html", player=player, party=party)
+    else: flash("Character name is already taken")
+    return redirect("/characters")
     
