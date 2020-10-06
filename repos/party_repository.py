@@ -90,3 +90,10 @@ def lowest_armour(id):
     if total is not None:
         lowest = total[0] 
     return lowest
+
+def all_games():
+    parties = party_repository.select_all()
+    upcoming_games = {"Next Game" : "Party Name"}
+    for party in parties:
+        upcoming_games[party.next_game] = [party.name]
+    return upcoming_games 
