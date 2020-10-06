@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="/characters">Go Back</a>
+<a href="/characters">View all Characters</a>
 <section>
     <h2> {{ character.name }} </h2>
     <p> Race: {{ character.race }} </p>
@@ -19,8 +19,8 @@
     <p> Enmities towards: {{ character.enmity }} </p>
     <p> Exhaustion Level: {{ character.exhaustion }} </p>
     <br>
-    <p> Party Member in: {{ character.party.name }} </p>
-    <p> Player Name: {{ character.player.full_name() }} </p>
+    <p> Party Member in: <a href="/parties/{{character.party.id}}">{{ character.party.name }} </a></p>
+    <p> Player Name: <a href="/players/{{character.player.id}}">{{ character.player.full_name() }} </a></p>
     
     <form action="/characters/{{ character.id }}/edit">
         <input type="submit" value="Edit">

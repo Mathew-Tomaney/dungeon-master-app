@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<h2>To create a new Character:</h2>
 <form action="characters/check", method="POST">
-    <label for="name">Unique Character Name: </label>
+    <label for="name">Enter a unique Character Name: </label>
     <input type="text" id="name" name="name">
-    <input type="submit" value="check name">
+    <input type="submit" value="Check Name Available">
 </form>
 
 {% with errors = get_flashed_messages() %}
@@ -19,7 +19,7 @@
 {% endwith %}
 
 
-<h2>Characters</h2>
+<h2>All Characters</h2>
 
 {% for character in characters %}
 

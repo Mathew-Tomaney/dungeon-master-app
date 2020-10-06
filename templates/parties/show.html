@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="/parties">Go Back</a>
+<a href="/parties">View all Parties</a>
 <section>
     <h2> {{ party.name }} </h2>
     <p>Next Game: {{ party.next_game }}</p>
     <p>Average Level: {{ average_level }}</p>
-    <p>Lowest Armour: {{ lowest_armour }}</p>
+    <p>Lowest Armour: {{ lowest_armour }} {% for character in characters %}{% if lowest_armour == character.armour %} : {{ character.name }} {% endif %} {% endfor %}</p>
+    <p>Lowest Armour: {{ lowest_armour }} {% for character in characters %}{% if lowest_armour == character.armour %} : {{ character.name }} {% endif %} {% endfor %}</p>
 
     
     <form action="/parties/{{ party.id }}/edit">
