@@ -126,3 +126,23 @@ def highest_insight(id):
     if skills is not None:
         highest = skills[-1]
     return highest
+
+def total_weight(id):
+    all_weights = []
+    characters = party_repository.characters(id)
+    for character in characters:
+        all_weights.append(character.weight)
+    total_weight = sum(all_weights)
+    return total_weight
+
+def party_magic(id):
+    has_magic = 0
+    characters = party_repository.characters(id)
+    for character in characters:
+        if character.magic == True:
+            has_magic += 1
+    return has_magic
+
+def party_magic_compare(id):
+    magic_percent = (party_repository.party_magic(id) / len(party_repository.players(id))) * 100
+    return round(magic_percent, 2)

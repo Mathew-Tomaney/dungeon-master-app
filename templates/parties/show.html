@@ -6,6 +6,9 @@
     <h2> {{ party.name }} </h2>
     <p>Next Game: {{ party.next_game }}</p>
     <p>Average Level: {{ average_level }}</p>
+    <p>Total Weight: {{ total_weight }} kg</p>
+    <p>Party access to Magical Damage: {{ magic_percent }}%</p>
+
     <p>Lowest Armour: {{ lowest_armour }} <br> {% for character in characters %}{% if lowest_armour == character.armour %}  <br> - {{ character.name }} {% endif %} {% endfor %}</p>
 
     <p>Highest Passive Perception: {{ highest_perception }} <br> {% for character in characters %}{% if highest_perception == character.perception %} <br> - {{ character.name }} {% endif %} {% endfor %}</p>

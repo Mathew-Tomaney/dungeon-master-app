@@ -27,7 +27,9 @@ def show_parties(id):
     all_contacts = party_repository.all_contact(id)
     highest_perception = party_repository.highest_perception(id)
     highest_insight = party_repository.highest_insight(id)
-    return render_template("/parties/show.html", party=party, players=players, characters=characters, num_of_players=num_of_players, average_level=average_level, lowest_armour=lowest_armour, all_contacts=all_contacts, highest_perception=highest_perception, highest_insight=highest_insight)
+    total_weight = party_repository.total_weight(id)
+    magic_percent = party_repository.party_magic_compare(id)
+    return render_template("/parties/show.html", party=party, players=players, characters=characters, num_of_players=num_of_players, average_level=average_level, lowest_armour=lowest_armour, all_contacts=all_contacts, highest_perception=highest_perception, highest_insight=highest_insight, total_weight=total_weight, magic_percent=magic_percent)
 
 # new
 @parties_blueprint.route("/parties/new")
