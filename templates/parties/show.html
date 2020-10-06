@@ -5,6 +5,7 @@
 <section>
     <h2> {{ party.name }} </h2>
     <p>Next Game: {{ party.next_game }}</p>
+    <p>Average Level: {{ average_level }}</p>
     
     <form action="/parties/{{ party.id }}/edit">
         <input type="submit" value="Edit">

@@ -70,3 +70,12 @@ def players(id):
         player = Player(result["first_name"], result["last_name"], result["email"], result["id"])
         players_in_party.append(player)
     return players_in_party
+
+def party_level(id):
+    party_level = 0
+    characters = party_repository.characters(id)
+    levels = []
+    for character in characters:
+        levels.append(character.level)
+        party_level = sum(levels)/len(levels)
+    return party_level
