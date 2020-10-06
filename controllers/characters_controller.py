@@ -96,14 +96,16 @@ def delete_character(id):
     character_repository.delete_id(id)
     return redirect("/characters")
 
-# @characters_blueprint.route("/characters/check_name/<name_choice>")
-# def check_name():
-#     name_choice = request.form["name_choice"]
-#     player_id = request.form["player_id"]
-#     party_id = request.form["party_id"]
-#     player = player_repository.select(player_id)
-#     party = party_repository.select(party_id)
-#     name_exists = character_repository.check(name_choice)
-#     if name_exists is False:
-#         return redirect("/characters/new.html")
-#     return render_template("/characters/<id>")    
+@characters_blueprint.route("/characters/check", methods=["POST"])
+def check_name():
+    name_choice = request.form["name"]
+    player_id = request.form["player_id"]
+    party_id = request.form["party_id"]
+    player = player_repository.select(player_id)
+    party = party_repository.select(party_id)
+    name_exists_id = character_repository.check(name_choice)
+    if name_exists_id is False:
+        return redirect("/characters/new")
+    # return redirect("/characters")
+    return render_template("/characters/index.html", player=player, party=party)
+    

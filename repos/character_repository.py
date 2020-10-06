@@ -59,6 +59,6 @@ def update(character):
 def check(new_name):
     characters = character_repository.select_all()
     for character in characters:
-        if character.name == new_name:
+        if character.name.lower() == new_name.lower():
             return character.id
     return False

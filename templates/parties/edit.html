@@ -9,10 +9,10 @@
 
 <form action="/parties/{{ party.id }}" method="POST">
     <div>
-        <label for="name">First name: </label>
+        <label for="name">Party Name: </label>
         <input type="text" id="name" name="name" value="{{ party.name }}">
-        <label for="next_game">Last name: </label>
-        <input type="text" id="next_game" name="next_game" value="{{ party.next_game }}">
+        <label for="next_game">Next Game: </label>
+        <input type="date" id="next_game" name="next_game" value="{{ party.next_game }}">
         <input type="submit" value="Update">
     </div>
 </form>
