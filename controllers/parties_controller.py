@@ -12,6 +12,7 @@ parties_blueprint = Blueprint("parties", __name__)
 @parties_blueprint.route("/parties")
 def parties():
     parties = party_repository.select_all()
+    parties.sort(key=lambda party: party.name)
     return render_template("parties/index.html", parties=parties)
 
 # show

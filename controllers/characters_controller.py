@@ -11,7 +11,7 @@ characters_blueprint = Blueprint("characters", __name__)
 @characters_blueprint.route("/characters")
 def characters():
     characters = character_repository.select_all()
-    characters.sort(key=lambda x: x.name)
+    characters.sort(key=lambda character: character.name)
     players = player_repository.select_all()
     parties = party_repository.select_all()
 

@@ -9,6 +9,7 @@ players_blueprint = Blueprint("players", __name__)
 @players_blueprint.route("/players")
 def players():
     players = player_repository.select_all()
+    players.sort(key=lambda player: player.last_name)
     return render_template("players/index.html", players=players)
 
 # show

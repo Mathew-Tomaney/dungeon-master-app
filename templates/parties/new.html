@@ -7,13 +7,11 @@
 <br>
 <br>
 <form action="/parties" method="POST">
-    <div>
-        <label for="name">Party name: </label>
-        <input type="text" id="name" name="name">
-        <label for="next_game">Next Game: </label>
-        <input type="date" id="next_game" name="next_game">
-        <input type="submit" value="Create">
-    </div>
+    <label for="name">Party name: </label>
+    <input type="text" id="name" name="name" required>
+    <label for="next_game">Next Game: </label>
+    <input type="date" id="next_game" name="next_game" required>
+    <input type="submit" value="Create">
 </form>
 
 {% endblock %}
