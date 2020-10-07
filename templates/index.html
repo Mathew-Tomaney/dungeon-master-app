@@ -2,8 +2,10 @@
 
 {% block content %}
 
-D&D party-manager app HOME
-
-{{ party_repository.all_games()}}
-
+<h2>Welcome to</h2>
+<h1>Pungeons & Flagons:</h1>
+<h3>a Dungeons & Dragons game-manager for the busy DM on the go!</h3>
+{% for party in parties %}
+    {{ party }}
+{% endfor %}
 {% endblock %}

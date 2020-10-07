@@ -15,7 +15,8 @@ app.register_blueprint(characters_blueprint)
 
 @app.route("/")
 def main():
-    return render_template('index.html', party_repository=party_repository)
+    parties = party_repository.all_games()
+    return render_template('index.html', parties=parties)
 
 
 if __name__ == '__main__':
