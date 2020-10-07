@@ -8,7 +8,7 @@
         <h2> {{ party.name }} </h2>
         <p>Next Game: {{ party.next_game }}</p>
         <form action="/parties/{{ party.id }}/edit">
-            <input type="submit" value="Edit">
+            <input class=button type="submit" value="Edit">
         </form>
         <br>
         <h3>Quick-ref information</h3>
@@ -33,16 +33,7 @@
     <h3>Characters in party: {{ num_of_players }} </h3>
     <div class=gallery>
     {% for character in characters %}
-        <!-- <div class=box>
-            <p>{{ character.name }} the {{ character.race }} {{ character.archetype }}, level {{ character.level }} <br> played by {{ character.player.first_name }} </p>
-            <form action="/characters/{{ character.id }}">
-                <input type="submit" value="View Character">
-            </form>
-            <form action="/players/{{ character.player.id }}">
-                <input type="submit" value="View Player">
-            </form>
-        </div> -->
-
+       
         <section class=box>
             <ul>  
                 <li><div class=title>{{ character.name }} </div> the {{ character.race }} {{ character. archetype }},</li>
@@ -75,7 +66,7 @@
 <p>Caution! This will remove all party details and associated Characters. Edit Characters to assign them to a new party first!</p>
 <form action="/parties/{{ party.id }}/delete" method="POST">
     <label for="delete">Are you sure?</label>
-    <input type="submit" id="delete" name="delete" value="Yes! Delete All.">
+    <input class=button type="submit" id="delete" name="delete" value="Yes! Delete All.">
 </form>
 </div>
 

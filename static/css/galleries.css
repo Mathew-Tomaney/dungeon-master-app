@@ -1,0 +1,79 @@
+
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+}
+
+.box {
+    flex-wrap: wrap;
+    min-width: 250px;
+    padding: 20px;
+    border: 2px solid lawngreen;
+    margin: 20px;
+    background: #00000085;
+}
+.box2{
+    flex-wrap: wrap;
+    display: grid;
+    min-width: 250px;
+    padding: 20px;
+    border: 2px solid lawngreen;
+    margin: 20px 500px;
+    background: #00000085;
+}
+
+
+#characterbox {
+    justify-content: start;
+}
+
+
+.box > ul {
+    list-style: none;
+}
+.box2 > ul {
+    list-style: none;
+}
+
+.buttonbox {
+    padding: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.box > ul > li {
+    display: grid;
+    grid-template-areas:
+    "left right";
+    justify-content: start;
+    column-gap: 10px;
+}
+.box2 > ul > li {
+    display: grid;
+    grid-template-areas:
+    "left right";
+    justify-content: center;
+    column-gap: 10px;
+}
+
+#show {
+    margin: 10px 0 0 50px;
+}
+
+.gallery2 {
+    min-height: 300px;
+    display: flex;
+    flex-flow: wrap;
+    margin: 50px 425px 0px 425px;
+    justify-content: space-between;
+    align-content: space-around;
+    background-color: #000000a6;
+    padding: 10px;
+    border: 1px solid lime;
+}
+
+.gallery2 > form > label {
+    padding: 0px 0px 0px 20px;
+}

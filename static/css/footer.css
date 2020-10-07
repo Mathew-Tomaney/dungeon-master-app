@@ -1,0 +1,22 @@
+.footer {
+    background: linear-gradient(transparent, 70%, fuchsia);
+    min-height: 200px;
+    margin: 0px;
+    padding: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer > h5 {
+    align-self: flex-end;
+}
+
+.footer > image {
+    align-self: baseline;
+}
+
+.spacer {
+    min-height: 350px;
+}

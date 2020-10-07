@@ -8,7 +8,7 @@
     <h3>E-mail: {{ player.email }}</h3>
 
     <form action="/players/{{ player.id }}/edit">
-        <input type="submit" value="Edit">
+        <input class=button type="submit" value="Edit">
     </form>
 </section>
    
@@ -46,7 +46,7 @@
     <p>Caution! This will remove all player details and associated Characters.</p>
     <form action="/players/{{ player.id }}/delete" method="POST">
         <label for="delete">Are you sure?</label>
-        <input type="submit" id="delete" name="delete" value="Yes! Delete All.">
+        <input class=button type="submit" id="delete" name="delete" value="Yes! Delete All.">
     </form>
 </main>
 

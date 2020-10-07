@@ -5,23 +5,9 @@
 <section class=titlecreate>
 <h2>Players</h2>
 <form action="/players/new">
-    <input type="submit" value="Create New Player">
+    <input class=button type="submit" value="Create New Player">
 </form>
 </section>
-<!-- {% for player in players %}
-
-<section>
-    <p>Name: {{ player.full_name() }}</p>
-    <p>E-mail: {{ player.email }}</p>
-    <form action="/players/{{ player.id }}">
-        <input type="submit" value="View">
-    </form>
-    <form action="/players/{{ player.id }}/edit">
-        <input type="submit" value="Edit">
-    </form>
-</section>
-
-{% endfor %} -->
 
 <section class=gallery>
     {% for player in players %}
