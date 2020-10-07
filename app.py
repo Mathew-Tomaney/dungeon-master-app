@@ -15,7 +15,8 @@ app.register_blueprint(characters_blueprint)
 
 @app.route("/")
 def main():
-    parties = party_repository.all_games()
+    parties = party_repository.select_all()
+    parties.sort(key=lambda party: party.next_game)
     return render_template('index.html', parties=parties)
 
 

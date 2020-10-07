@@ -91,13 +91,6 @@ def lowest_armour(id):
         lowest = total[0] 
     return lowest
 
-def all_games():
-    parties = party_repository.select_all()
-    upcoming_games = []
-    for party in parties:
-        upcoming_games.append([party.name, party.next_game])
-    return upcoming_games 
-
 def all_contact(id):
     players = party_repository.players(id)
     contacts =[]

@@ -107,6 +107,6 @@ def check_name():
         # players = player_repository.select_all()
         # parties = party_repository.select_all()
         # return render_template("/characters/new.html", players=players, parties=parties, name_choice=name_choice)
-    else: flash("Character name is not available")
+    else: flash("This adventurer already exists! Pick a new name!")
     return redirect("/characters")
     

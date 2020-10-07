@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<hgroup> 
+    <h2>Welcome to</h2>
+    <h1>Pungeons & Flagons:</h1>
+    <h3>a Dungeons & Dragons game-manager (for the busy DM on the go!)</h3>
+</hgroup>
 
-<h2>Welcome to</h2>
-<h1>Pungeons & Flagons:</h1>
-<h3>a Dungeons & Dragons game-manager for the busy DM on the go!</h3>
+<h4>Your next games:</h4>
 {% for party in parties %}
-    {{ party }}
+    "{{ party.name }}" next playing: {{ party.next_game }} <br>
 {% endfor %}
 {% endblock %}
