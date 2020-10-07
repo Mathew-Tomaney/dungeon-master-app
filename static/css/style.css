@@ -235,3 +235,20 @@ p {
 .spacer {
     min-height: 350px;
 }
+
+.gallery2 {
+    min-height: 300px;
+    display: flex;
+    flex-flow: wrap;
+    margin: 50px 425px 0px 425px;
+    justify-content: space-between;
+    align-content: space-around;
+    background-color: #000000a6;
+    padding: 10px;
+    border: 1px solid lime;
+}
+
+.gallery2 > form > label {
+    padding: 0px 0px 0px 20px;
+}
+

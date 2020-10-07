@@ -6,78 +6,100 @@
 <a href="/characters">Go Back</a>
 <br>
 <br>
-<form action="/characters" method="POST">
-        <label for="party_id">Party Member in: </label>
-        <select name="party_id" id="party_id">
-            {% for party in parties %}
-            <option value="{{ party.id }}">{{ party.name }}</option>
-            {% endfor %}
-        </select>
-        <label for="player_id">Player Name: </label>
-        <select name="player_id" id="player_id">
-            {% for player in players %}
-            <option value="{{ player.id }}">{{ player.full_name() }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="name">Name: </label>
-        <select name="name" id="name">
-            <option selected="selected" value="{{ name_choice }}">{{ name_choice }}</option>
-        </select>
-        <br>
-        <label for="race">Race: </label>
-        <input type="text" id="race" name="race" required>
-
-        <label for="archetype">Class: </label>
-        <input type="text" id="archetype" name="archetype" required>
+    <form class=gallery2 action="/characters" method="POST"> 
+        <div>    
+            <label for="party_id">Party: </label>
+            <select name="party_id" id="party_id">
+                {% for party in parties %}
+                <option value="{{ party.id }}">{{ party.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="player_id">Player: </label>
+            <select name="player_id" id="player_id">
+                {% for player in players %}
+                <option value="{{ player.id }}">{{ player.full_name() }}</option>
+                {% endfor %}
+            </select>
+        </div>
         
-        <label for="level">Level: </label>
-        <input type="text" id="level" name="level" required>
-        <br>
-        <label for="armour">Armour: </label>
-        <input type="text" id="armour" name="armour" required>
-        
-        <label for="magic">Can Do Magical Damage?: </label>
-        <select name="magic" id="magic">
-            <option value="True">Yes</option>
-            <option value="False">No</option>
-        </select>
-        
-        <label for="weight">Weight: </label>
-        <input type="text" id="weight" name="weight" required>
-        
-        <label for="perception">Passive Perception: </label>
-        <input type="text" id="perception" name="perception" required>
-        
-        <label for="insight">Passive Insight: </label>
-        <input type="text" id="insight" name="insight" required>
-        <br>
-        <label for="immunity">Resistances or Immunities: </label>
-        <input type="text" id="immunity" name="immunity" required>
-        
-        <label for="vision">Vision Types: </label>
-        <input type="text" id="vision" name="vision" required>
-        
-        <label for="language">Languages: </label>
-        <input type="text" id="language" name="language" required>
-        
-        <label for="aura">Abilities affecting Party: </label>
-        <input type="text" id="aura" name="aura" required>
-        <br>
-        <label for="enmity">Enmities towards: </label>
-        <input type="text" id="enmity" name="enmity" required>
-        
-        <label for="exhaustion">Exhaustion Level: </label>
-        <select name="exhaustion" id="exhaustion">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <br>
-        <input type="submit" value="Create">
-</form>
+        <div>
+            <label for="race">Race: </label>
+            <input type="text" id="race" name="race" required>
+        </div>
+        <div>
+            <label for="archetype">Class: </label>
+            <input type="text" id="archetype" name="archetype" required>
+        </div>
+        <div>
+            <label for="level">Level: </label>
+            <input type="text" id="level" name="level" required>
+        </div> 
+        <div>
+            <label for="armour">Armour: </label>
+            <input type="text" id="armour" name="armour" required>
+        </div>
+        <div>
+            <label for="magic">Magical Damage?: </label>
+            <select name="magic" id="magic">
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+        </div>
+        <div>
+            <label for="weight">Weight: </label>
+            <input type="text" id="weight" name="weight" required>
+        </div>
+        <div>
+            <label for="perception">Perception: </label>
+            <input type="text" id="perception" name="perception" required>
+        </div>
+        <div>
+            <label for="insight">Insight: </label>
+            <input type="text" id="insight" name="insight" required>
+        </div>
+        <div>
+            <label for="immunity">Immunities: </label>
+            <input type="text" id="immunity" name="immunity" required>
+        </div>
+        <div>
+            <label for="vision">Vision: </label>
+            <input type="text" id="vision" name="vision" required>
+        </div>
+        <div>
+            <label for="language">Languages: </label>
+            <input type="text" id="language" name="language" required>
+        </div>
+        <div>
+            <label for="aura">Auras: </label>
+            <input type="text" id="aura" name="aura" required>
+        </div>
+        <div>
+            <label for="enmity">Enmities to: </label>
+            <input type="text" id="enmity" name="enmity" required>
+        </div>
+        <div>
+            <label for="name">Name: </label>
+            <select name="name" id="name">
+                <option selected="selected" value="{{ name_choice }}">{{ name_choice }}</option>
+            </select>
+        </div>
+        <div>
+            <label for="exhaustion">Exhaustion Level: </label>
+            <select name="exhaustion" id="exhaustion">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Create">
+        </div>
+    </form>
+</div>
 
 {% endblock %}

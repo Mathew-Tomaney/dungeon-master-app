@@ -6,78 +6,107 @@
 <a href="/characters/{{ character.id }}">Go Back</a>
 <br>
 <br>
-<form action="/characters/{{ character.id }}" method="POST">
-    <div>
-        <label for="party_id">Party: </label>
-        <select name="party_id" id="party_id">
-            <option value="{{ character.party.id }}" selected="selected">{{ character.party.name }}</option>
-            {% for party in parties %}
-                {% if party.id != character.party.id %}
-                <option value="{{ party.id }}">{{ party.name }}</option>
+<form class=gallery2 action="/characters/{{ character.id }}" method="POST">
+    
+        <div>
+            <label for="party_id">Party: </label>
+            <select name="party_id" id="party_id">
+                <option value="{{ character.party.id }}" selected="selected">{{ character.party.name }}</option>
+                {% for party in parties %}
+                    {% if party.id != character.party.id %}
+                    <option value="{{ party.id }}">{{ party.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="player_id">Player Name: </label>
+            <select name="player_id" id="player_id">
+                < value="{{ character.player.id }}" selected="selected">{{ character.player.full_name() }}</  option>
+                {% for player in players %}
+                    {% if player.id != character.player.id %}
+                    <option value="{{ player.id }}">{{ player.full_name() }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <input type="hidden" id="name" name="name" value="{{ character.name }}">
+        </div>
+        <div>
+            <label for="race">Race: </label>
+            <input type="text" id="race" name="race" value="{{ character.race }}">
+        </div>
+        <div>
+            <label for="archetype">Class: </label>
+            <input type="text" id="archetype" name="archetype" value="{{ character.archetype }}">
+        </div>
+        <div>
+            <label for="level">Level: </label>
+            <input type="text" id="level" name="level" value="{{ character.level }}">
+        </div>
+        <div>
+            <label for="armour">Armour: </label>
+            <input type="text" id="armour" name="armour" value="{{ character.armour }}">
+        </div>
+        <div>
+            <label for="magic">Magical Damage?: </label>
+            <select name="magic" id="magic">
+                <option value="{{ character.magic }}" selected="selected"> {% if character.magic == True %} Yes     {% else %} No {% endif %} </option>
+
+                {% if character.magic == True %}
+                <option value="False">No</option>
+                {% elif character.magic == False %}
+                <option value="True">Yes</option>
                 {% endif %}
-            {% endfor %}
-        </select>
-        <label for="player_id">Player Name: </label>
-        <select name="player_id" id="player_id">
-            <option value="{{ character.player.id }}" selected="selected">{{ character.player.full_name() }}</option>
-            {% for player in players %}
-                {% if player.id != character.player.id %}
-                <option value="{{ player.id }}">{{ player.full_name() }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <br>
-        <label for="name">Name: </label>
-        <input type="text" id="name" name="name" value="{{ character.name }}">
-        <br>
-        <label for="race">Race: </label>
-        <input type="text" id="race" name="race" value="{{ character.race }}">
-        <label for="archetype">Class: </label>
-        <input type="text" id="archetype" name="archetype" value="{{ character.archetype }}">
-        <label for="level">Level: </label>
-        <input type="text" id="level" name="level" value="{{ character.level }}">
-        <br>
-        <label for="armour">Armour: </label>
-        <input type="text" id="armour" name="armour" value="{{ character.armour }}">
-        <label for="magic">Can Do Magical Damage?: </label>
-        <select name="magic" id="magic">
-            <option value="{{ character.magic }}" selected="selected"> {% if character.magic == True %} Yes {% else %} No {% endif %} </option>
-            
-            {% if character.magic == True %}
-            <option value="False">No</option>
-            {% elif character.magic == False %}
-            <option value="True">Yes</option>
-            {% endif %}
-        </select>
-        <label for="weight">Weight: </label>
-        <input type="text" id="weight" name="weight" value="{{ character.weight }}">
-        <label for="perception">Passive Perception: </label>
-        <input type="text" id="perception" name="perception" value="{{ character.perception }}">
-        <label for="insight">Passive Insight: </label>
-        <input type="text" id="insight" name="insight" value="{{ character.insight }}">
-        <br>
-        <label for="immunity">Resistances or Immunities: </label>
-        <input type="text" id="immunity" name="immunity" value="{{ character.immunity }}">
-        <label for="vision">Vision Types: </label>
-        <input type="text" id="vision" name="vision" value="{{ character.vision }}">
-        <label for="language">Languages: </label>
-        <input type="text" id="language" name="language" value="{{ character.language }}">
-        <label for="aura">Abilities affecting Party: </label>
-        <input type="text" id="aura" name="aura" value="{{ character.aura }}">
-        <br>
-        <label for="enmity">Enmities towards: </label>
-        <input type="text" id="enmity" name="enmity" value="{{ character.enmity }}">
-        <label for="exhaustion">Exhaustion Level: </label>
-        <select name="exhaustion" id="exhaustion">
-            <option value="{{ character.exhaustion }}">{{ character.exhaustion }}</option>
-            {% for exhaustion in range(6) %}
-                {% if exhaustion != character.exhaustion %}
-                    <option value="{{ exhaustion }}">{{ exhaustion }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <br>
-        <input type="submit" value="Update" >
-    </div>
+            </select>
+        </div>
+        <div>
+            <label for="weight">Weight: </label>
+            <input type="text" id="weight" name="weight" value="{{ character.weight }}">
+        </div>
+        <div>
+            <label for="perception">Perception: </label>
+            <input type="text" id="perception" name="perception" value="{{ character.perception }}">
+        </div>
+        <div>
+            <label for="insight">Insight: </label>
+            <input type="text" id="insight" name="insight" value="{{ character.insight }}">
+        </div>
+        <div>
+            <label for="immunity">Immunities: </label>
+            <input type="text" id="immunity" name="immunity" value="{{ character.immunity }}">
+        </div>
+        <div>
+            <label for="vision">Vision: </label>
+            <input type="text" id="vision" name="vision" value="{{ character.vision }}">
+        </div>
+        <div>
+            <label for="language">Languages: </label>
+            <input type="text" id="language" name="language" value="{{ character.language }}">
+        </div>
+        <div>
+            <label for="aura">Auras: </label>
+            <input type="text" id="aura" name="aura" value="{{ character.aura }}">
+        </div>
+        <div>
+            <label for="enmity">Enmities to: </label>
+            <input type="text" id="enmity" name="enmity" value="{{ character.enmity }}">
+        </div>
+        <div>
+            <label for="exhaustion">Exhaustion Level: </label>
+            <select name="exhaustion" id="exhaustion">
+                <option value="{{ character.exhaustion }}">{{ character.exhaustion }}</option>
+                {% for exhaustion in range(6) %}
+                    {% if exhaustion != character.exhaustion %}
+                        <option value="{{ exhaustion }}">{{ exhaustion }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Update" >
+        </div>
+    
 </form>
 {% endblock %}
