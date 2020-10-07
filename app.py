@@ -1,4 +1,4 @@
-from flask import Flask, flash, render_template
+from flask import Flask, Blueprint, flash, render_template
 
 from controllers.players_controller import players_blueprint
 from controllers.parties_controller import parties_blueprint
@@ -19,4 +19,4 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=true)
