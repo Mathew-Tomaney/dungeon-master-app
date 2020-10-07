@@ -1,25 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-
+<main id=parties>
+<section class=titlecreate>
 <h2>Parties</h2>
 <form action="/parties/new">
     <input type="submit" value="Create New Party">
 </form>
-{% for party in parties %}
-
-<section>
-    <p>Name: {{ party.name }}</p>
-    <p>Next Game: {{ party.next_game }}</p>
-    <form action="/parties/{{ party.id }}">
-        <input type="submit" value="View">
-    </form>
-    <form action="/parties/{{ party.id }}/edit">
-        <input type="submit" value="Edit">
-    </form>
 </section>
 
-{% endfor %}
+<section class=gallery>
+    {% for party in parties %}
 
+        <section class=box>
+            <ul>
+                <li><div class=title>Party Name: </div> {{ party.name }}</li>
+                <li><div class=title>Next Game: </div> {{ party.next_game }}</li>
+            </ul>
+            <div class=buttonbox>
+                <form action="/parties/{{ party.id }}">
+                    <input type="submit" value="View">
+                </form>
+                <form action="/parties/{{ party.id }}/edit">
+                    <input type="submit" value="Edit">
+                </form>
+            </div>    
+        </section>
+
+    {% endfor %}
+</section>
+</main>
 {% endblock %}

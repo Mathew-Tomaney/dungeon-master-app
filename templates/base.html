@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap" rel="stylesheet">
     <title>DM Party Manager</title>
 </head>
 <body>
     <header>
+        <img id=logo src="{{ url_for('static', filename='images/die.png') }}" alt="a free d20 icon">
+        <h1>Dungeons & Flagons</h1>
         <nav>
             <ul>
                 <li>
@@ -29,4 +32,8 @@
     
     {% endblock %}
 </body>
+<footer class=footer>
+    <img id=logo src="{{ url_for('static', filename='images/die.png') }}" alt="logo">
+    <h5>Dungeons & Flagons was made by Mathew. May you always roll nat20! X</h5>
+</footer>
 </html>

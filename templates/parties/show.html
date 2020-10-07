@@ -1,33 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="/parties">View all Parties</a>
+
 <section>
-    <h2> {{ party.name }} </h2>
-    <p>Next Game: {{ party.next_game }}</p>
-    <br>
-    <h3>Quick-ref information</h3>
-    <p>Average Level: {{ average_level }}</p>
-    <p>Total Weight: {{ total_weight }} kg</p>
-    <p>Party access to Magical Damage: {{ magic_percent }}%</p>
+    <div class=titlecreate>
+        <a href="/parties">View all Parties</a>
+        <h2> {{ party.name }} </h2>
+        <p>Next Game: {{ party.next_game }}</p>
+        <form action="/parties/{{ party.id }}/edit">
+            <input type="submit" value="Edit">
+        </form>
+        <br>
+        <h3>Quick-ref information</h3>
+    </div>
 
-    <p>Lowest Armour: {{ lowest_armour }} <br> {% for character in characters %}{% if lowest_armour == character.armour %}  <br> - {{ character.name }} {% endif %} {% endfor %}</p>
+    <section class=gallery>
+        <div class=box><p>Average Level: {{ average_level }}</p></div>
+        <div class=box><p>Total Weight: {{ total_weight }} kg</p></div>
+        <div class=box><p>Party Magical Damage: {{ magic_percent }}%</p></div>
 
-    <p>Highest Passive Perception: {{ highest_perception }} <br> {% for character in characters %}{% if highest_perception == character.perception %} <br> - {{ character.name }} {% endif %} {% endfor %}</p>
+        <div class=box><p>Lowest Armour: {{ lowest_armour }} <br> {% for character in characters %}{% if lowest_armour ==  character.armour %} <div class=title>{{ character.name }}</div> {% endif %} {% endfor %}</p></div>
 
-    <p>Highest Passive Insight: : {{ highest_insight }} <br> {% for character in characters %}{% if highest_insight == character.insight %} <br> - {{ character.name }} {% endif %} {% endfor %}</p>
+        <div class=box><p>Highest Passive Perception: {{ highest_perception }} <br> {% for character in characters %}{% if highest_perception == character.perception %} <div class=title>{{ character.name }}</div> {% endif %} {% endfor %}</p></div>
 
+        <div class=box><p>Highest Passive Insight: : {{ highest_insight }} <br> {% for character in characters %}{% if     highest_insight == character.insight %} <div class=title>{{ character.name }}</div> {% endif %} {% endfor %}</p></div>
+     </section>
     
-    <form action="/parties/{{ party.id }}/edit">
-        <input type="submit" value="Edit">
-    </form>
+
 </section>
 
 <section>
     <h3>Characters in party: {{ num_of_players }} </h3>
-    
+    <div class=gallery>
     {% for character in characters %}
-        <div>
+        <!-- <div class=box>
             <p>{{ character.name }} the {{ character.race }} {{ character.archetype }}, level {{ character.level }} <br> played by {{ character.player.first_name }} </p>
             <form action="/characters/{{ character.id }}">
                 <input type="submit" value="View Character">
@@ -35,26 +41,42 @@
             <form action="/players/{{ character.player.id }}">
                 <input type="submit" value="View Player">
             </form>
-        </div>
+        </div> -->
+
+        <section class=box>
+            <ul>  
+                <li><div class=title>{{ character.name }} </div> the {{ character.race }} {{ character. archetype }},</li>
+                <li><div class=title> level {{ character.level }} </div> in the {{ character.party.name }}  party.</li>
+            </ul>
+            <div class=buttonbox>
+              <form action="/characters/{{ character.id }}">
+                  <input type="submit" value="View Character">
+              </form>
+            </div>
+          </section>
     {% endfor %}
+    </div>
+
     {% if characters == [] %}
-        <p>No characters/players yet!</p>
+        <p class=box>No characters/players yet!</p>
     {% endif %}
 </section>
-<section>
+<section class=contacts>
     <h4>Contact all players:</h4>
-    <p> {{ all_contacts }}, </p>
+    {% for contact in all_contacts %}
+    <p> {{ contact }}, </p>
+    {% endfor %}
 </section>
 <br>
 <br>
 <br>
-
+<div class=titlecreate>
 <h4>Delete Party?</h4>
 <p>Caution! This will remove all party details and associated Characters. Edit Characters to assign them to a new party first!</p>
 <form action="/parties/{{ party.id }}/delete" method="POST">
     <label for="delete">Are you sure?</label>
     <input type="submit" id="delete" name="delete" value="Yes! Delete All.">
 </form>
-
+</div>
 
 {% endblock %}

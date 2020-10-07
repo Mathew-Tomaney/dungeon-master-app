@@ -2,12 +2,13 @@
 
 {% block content %}
 
-
+<section class=titlecreate>
 <h2>Players</h2>
 <form action="/players/new">
     <input type="submit" value="Create New Player">
 </form>
-{% for player in players %}
+</section>
+<!-- {% for player in players %}
 
 <section>
     <p>Name: {{ player.full_name() }}</p>
@@ -20,6 +21,26 @@
     </form>
 </section>
 
-{% endfor %}
+{% endfor %} -->
+
+<section class=gallery>
+    {% for player in players %}
+
+      <section class=box>
+        <ul>  
+            <li><div class=title>Name: </div> {{ player.full_name() }}</li>
+            <li><div class=title>E-mail: </div> {{ player.email }}</li>
+        </ul>
+        <div class=buttonbox>
+          <form action="/players/{{ player.id }}">
+              <input type="submit" value="View">
+          </form>
+          <form action="/players/{{ player.id }}/edit">
+              <input type="submit" value="Edit">
+          </form>
+        </div>
+      </section>
+    {% endfor %}
+  </section>
 
 {% endblock %}

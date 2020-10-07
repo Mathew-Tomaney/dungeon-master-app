@@ -1,42 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>To create a new Character:</h2>
-<form action="characters/check", method="POST">
-    <label for="name">Enter a unique Character Name: </label>
-    <input type="text" id="name" name="name">
-    <input type="submit" value="Check Name Available">
-</form>
+  <section class=titlecreate>
+    <h2>To create a new Character:</h2>
+    <p>A character needs a Player and a Party first!</p>
+    <form action="characters/check", method="POST">
+        <label for="name">Enter a unique Character Name: </label>
+        <input type="text" id="name" name="name">
+        <input type="submit" value="Check Name Available">
+    </form>
+  </section>
 
-{% with errors = get_flashed_messages() %}
-  {% if errors %}
-    <ul class=flashes>
-    {% for error in errors %}
-      <li>{{ error }}</li>
+  {% with errors = get_flashed_messages() %}
+    {% if errors %}
+      <ul class=flashes>
+      {% for error in errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <div id=allcharacters>
+  <h4>All Characters</h4>
+  </div>
+  <section class=gallery>
+    {% for character in characters %}
+      <section id=characterindex class=box>
+        <ul>  
+          <li><div class=title>Name:</div><div class=attribute>{{ character.name }}</div></li>
+          <li><div class=title>Race:</div><div class=attribute>{{ character.race }}</div></li>
+          <li><div class=title>Class:</div><div class=attribute>{{ character.archetype }}</div></li>
+          <li><div class=title>Level:</div><div class=attribute>{{ character.level }}</div></li>
+        </ul>
+        <div class=buttonbox>
+          <form action="/characters/{{ character.id }}">
+              <input type="submit" value="View">
+          </form>
+          <form action="/characters/{{ character.id }}/edit">
+              <input type="submit" value="Edit">
+          </form>
+        </div>
+      </section>
     {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
-
-<h2>All Characters</h2>
-
-{% for character in characters %}
-
-<section>
-    <p>Name: {{ character.name }}</p>
-    <p>Race: {{ character.race }}</p>
-    <p>Class: {{ character.archetype }}</p>
-    <p>Level: {{ character.level}}</p>
-
-    <form action="/characters/{{ character.id }}">
-        <input type="submit" value="View">
-    </form>
-    <form action="/characters/{{ character.id }}/edit">
-        <input type="submit" value="Edit">
-    </form>
-</section>
-
-{% endfor %}
+  </section>
 
 {% endblock %}

@@ -2,7 +2,7 @@
 
 {% block content %}
 <a href="/characters">View all Characters</a>
-<section>
+<!-- <section>
     <h2> {{ character.name }} </h2>
     <p> Race: {{ character.race }} </p>
     <p> Class: {{ character.archetype }} </p>
@@ -25,7 +25,33 @@
     <form action="/characters/{{ character.id }}/edit">
         <input type="submit" value="Edit">
     </form>
-</section>
+</section> -->
+<h2> {{ character.name }} </h2>
+<section class=box2>
+    <ul>  
+        <li id=characterbox><div class=title>Race: </div>{{ character.race}} </li>
+        <li id=characterbox><div class=title>Class: </div>{{ character.archetype}} </li>
+        <li id=characterbox><div class=title>Level: </div>{{ character.level}} </li>
+        <li id=characterbox><div class=title>Armour: </div> {{ character.armour}}</li>
+        <li id=characterbox><div class=title>Magical Damage: </div> {{ character.magic}}</li>
+        <li id=characterbox><div class=title>Weight: </div>{{ character.weight}} </li>
+        <li id=characterbox><div class=title>Passive Perception: </div>{{ character.perception}} </li>
+        <li id=characterbox><div class=title>Passive Insight: </div>{{ character.insight}} </li>
+        <li id=characterbox><div class=title>Resistances or Immunities: </div> {{ character.immunity}}</li>
+        <li id=characterbox><div class=title>Languages: Common, </div> {{ character.race}}, {{ character.language}}</li>
+        <li id=characterbox><div class=title>Abilities affecting Party: </div>{{ character.aura}} </li>
+        <li id=characterbox><div class=title>Enmities towards: </div> {{ character.enmity}} </li>
+        <li id=characterbox><div class=title>Exhaustion Level: </div> {{ character.exhaustion}}</li>
+        <br>
+        <li id=characterbox><div class=title>Party Member in: </div> <a href="/parties/{{character.party.id}}">{{ character.party.name }} </a></li>
+        <li id=characterbox><div class=title>Player Name: </div><a href="/players/{{character.player.id}}">{{ character.player.full_name() }} </a></li>
+    </ul>
+    <div class=buttonbox>
+      <form action=/characters/{{character.id}}/edit>
+          <input type="submit" value="Edit">
+      </form>
+    </div>
+  </section>
 
 <section>
     

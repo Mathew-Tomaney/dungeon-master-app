@@ -1,12 +1,237 @@
 body {
     background-color: black;
-    color: lawngreen;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    background-image: url(/static/images/cave.jpg);
+    background-size: cover;
+}
+
+body > header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 2px solid lime;
+    border-top: 2px solid lime;
+    background-color: black;
+}
+
+body > header > h1 {
+    align-self: center;
+    font-family: 'Calligraffitti', cursive;
+    font-size: 50pt;
+}
+body > header > nav {
+    align-self: center;
+}
+
+body > header > nav > ul {
+    display: flex;
+    list-style: none;
+    flex-flow: row nowrap;
+}
+
+body > header > nav > ul > li {
+    padding: 15px;
+}
+
+body > header > nav > ul > li > a {
+    font-size: 24pt;
+    text-decoration: none;
+    color: fuchsia;
+    border: 2px solid fuchsia;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+body > header > nav > ul > li > a:hover {
+    background-color: lime;
+}
+
+#logo {
+    background-color: fuchsia;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    align-self: flex-end;
+}
+
+#welcome {
+    padding: 10px 0 10px 50px;
+    margin: 30px 750px 0 50px;
+    background-color: #000000a6;
+}
+
+
+#nextgames {
+    padding: 20px 100px;
+    background-color: #000000a6;
+    margin: 0 750px 0 50px;
+}
+
+#nextgames > ul > li {
+    padding: 20px 0 0 40px;
+    
+    list-style: circle;
+    color: lime;
+   
+    
+}
+
+a {
+    color: aqua;
 }
 
 h1 {
     color: fuchsia;
+    font-size: 50pt;
+    font-family: 'Calligraffitti', cursive;
+    margin: 0 10px;
 }
 
 h2 {
     color: fuchsia;
+    font-size: 40pt;
+    margin: 10px;
+}
+
+h3 { 
+    font-size: 30pt;
+    font-style: italic;
+    margin: 10px;
+}
+
+h4 {
+    color: lime;
+    font-size: 30pt;
+    margin: 10px;
+}
+
+.title {
+    color: lime;
+    grid-area: left;
+    justify-self: start;
+}
+
+.attribute {
+   grid-area: right;  
+   justify-self: center;
+}
+
+
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+}
+
+.box {
+    flex-wrap: wrap;
+    min-width: 250px;
+    padding: 20px;
+    border: 2px solid lawngreen;
+    margin: 20px;
+    background: #00000085;
+}
+.box2{
+    flex-wrap: wrap;
+    display: grid;
+    min-width: 250px;
+    padding: 20px;
+    border: 2px solid lawngreen;
+    margin: 20px 500px;
+    background: #00000085;
+}
+
+
+#characterbox {
+    justify-content: start;
+}
+
+
+.box > ul {
+    list-style: none;
+}
+.box2 > ul {
+    list-style: none;
+}
+
+.buttonbox {
+    padding: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.box > ul > li {
+    display: grid;
+    grid-template-areas:
+    "left right";
+    justify-content: start;
+    column-gap: 10px;
+}
+.box2 > ul > li {
+    display: grid;
+    grid-template-areas:
+    "left right";
+    justify-content: center;
+    column-gap: 10px;
+}
+
+#show {
+    margin: 10px 0 0 50px;
+}
+
+p {
+    font-size: 14pt;
+}
+
+#playeredit {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#playeredit > form {
+    align-self: center;
+    padding: 10px 0 0 10px;    
+}
+
+#playeredit > h3 {
+    align-self: center;
+    background-color: #000000a6;
+    padding:5px;    
+}
+
+.titlecreate {
+    padding: 20px
+}
+#allcharacters {
+    padding: 20px
+}
+
+.contacts {
+    margin: 0 0 0 10px;
+}
+
+.footer {
+    background: linear-gradient(transparent, 70%, fuchsia);
+    min-height: 200px;
+    margin: 0px;
+    padding: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer > h5 {
+    align-self: flex-end;
+}
+
+.footer > image {
+    align-self: baseline;
+}
+
+.spacer {
+    min-height: 350px;
 }
