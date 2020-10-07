@@ -146,3 +146,4 @@ def party_magic(id):
 def party_magic_compare(id):
     magic_percent = (party_repository.party_magic(id) / len(party_repository.players(id))) * 100
     return round(magic_percent, 2)
+
