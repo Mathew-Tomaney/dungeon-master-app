@@ -104,9 +104,6 @@ def check_name():
     name_exists_id = character_repository.check(name_choice)
     if name_exists_id is False and name_choice is not "":
         return redirect(f"/characters/new/{name_choice}")
-        # players = player_repository.select_all()
-        # parties = party_repository.select_all()
-        # return render_template("/characters/new.html", players=players, parties=parties, name_choice=name_choice)
     else: flash("This adventurer already exists! Pick a new name!")
     return redirect("/characters")
     
